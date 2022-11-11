@@ -41,7 +41,7 @@ elif len(sys.argv) == 2:
 else:
     prompt=True
 
-P_L_CC_KENNUNG_APV = [None]*16
+paddingByteTable = [None]*16
 
 while True:
     if prompt:
@@ -64,11 +64,11 @@ while True:
         sys.exit("Invalid hex values found")
 
     counter=msgSet[1] & 0x0F
-    P_L_CC_KENNUNG_APV[counter]=findKey(msgSet)
+    paddingByteTable[counter]=findKey(msgSet)
 
 
 print("[", end='')
 for i in range(16):
-    print(None if P_L_CC_KENNUNG_APV[i] is None else hex(P_L_CC_KENNUNG_APV[i]),end='')
+    print(None if paddingByteTable[i] is None else hex(paddingByteTable[i]),end='')
     print(',' if i<15 else ']\n',end='')
 
